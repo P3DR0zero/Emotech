@@ -51,3 +51,5 @@ export default function AppTheme(props: AppThemeProps) {
     </ThemeProvider>
   );
 }
+
+// O erro que tá tendo é porque tanto o navigation quanto o surface não estão sendo exportados corretamente.
