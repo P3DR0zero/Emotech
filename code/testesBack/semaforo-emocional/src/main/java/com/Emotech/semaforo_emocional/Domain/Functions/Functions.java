@@ -1,4 +1,4 @@
-package com.Emotech.semaforo_emocional.Domain.Pessoa;
+package com.Emotech.semaforo_emocional.Domain.Functions;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -12,20 +12,18 @@ import org.apache.logging.log4j.message.AsynchronouslyFormattable;
 import java.util.UUID;
 
 
-@AsynchronouslyFormattable
-@Enttity
 @Table
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-public class Pessoa {
+@Entity
+public class Functions {
     @Id
     @GeneratedValue
-    private String nome;
-    private String email;
-    private String telefone;
-    private int idade;
-    private String cpf;
+
     private UUID id;
+
+    @OneToOne
+    @JoinColumn(name =)
+    private pessoa;
+
+    private func;
+
 }
