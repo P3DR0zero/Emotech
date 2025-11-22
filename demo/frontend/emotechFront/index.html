@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <span class="logo-emoji">🌼</span>
+                <span>Painel de Emoções</span>
+            </div>
+            <div class="user-info">
+                <div class="avatar">M</div>
+                <span class="user-name">Maria Silva</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="dashboard-grid">
+            <!-- Welcome Card -->
+            <div class="card welcome-card">
+                <div class="welcome-content">
+                    <h2>Acompanhamento, Maria! 👋</h2>
+                    <p>bBem-estar emocional da sua Criança</p>
+                    <div class="stats-grid">
+                        <div class="stat-item happiness-stat">
+                            <span class="stat-value">60%</span>
+                            <div class="stat-label">Felicidade</div>
+                        </div>
+                        <div class="stat-item neutral-stat">
+                            <span class="stat-value">25%</span>
+                            <div class="stat-label">Meio Termo</div>
+                        </div>
+                        <div class="stat-item sadness-stat">
+                            <span class="stat-value">15%</span>
+                            <div class="stat-label">Tristeza</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chart Card -->
+            <div class="card chart-card">
+                <div class="card-header">
+                    <div>
+                        <h3 class="card-title">Perfil Emocional</h3>
+                        <p class="card-subtitle">Distribuição das suas emoções</p>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="emotionChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Emotions Card -->
+            <div class="card emotions-card">
+                <div class="card-header">
+                    <div>
+                        <h3 class="card-title">Suas Emoções</h3>
+                        <p class="card-subtitle">Entenda seus sentimentos</p>
+                    </div>
+                </div>
+                <div class="emotions-list">
+                    <div class="emotion-item happiness-item">
+                        <div class="emotion-emoji">😊</div>
+                        <div class="emotion-info">
+                            <h4>Felicidade</h4>
+                            <p>Momentos de bem-estar, satisfação e energia positiva. Continue cultivando essas experiências!</p>
+                        </div>
+                    </div>
+                    <div class="emotion-item neutral-item">
+                        <div class="emotion-emoji">😐</div>
+                        <div class="emotion-info">
+                            <h4>Meio Termo</h4>
+                            <p>Estado de equilíbrio e neutralidade. Perfeito para reflexão e momentos de transição.</p>
+                        </div>
+                    </div>
+                    <div class="emotion-item sadness-item">
+                        <div class="emotion-emoji">😔</div>
+                        <div class="emotion-info">
+                            <h4>Tristeza</h4>
+                            <p>É normal sentir tristeza às vezes. Permita-se sentir essas emoções e pratique o autocuidado.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Card -->
+            <div class="card progress-card">
+                <div class="card-header">
+                    <div>
+                        <h3 class="card-title">Seu Progresso</h3>
+                        <p class="card-subtitle">Evolução do seu bem-estar</p>
+                    </div>
+                </div>
+                <div class="progress-stats">
+                    <div class="progress-item">
+                        <span class="progress-value">7</span>
+                        <div class="progress-label">Dias Consecutivos</div>
+                    </div>
+                    <div class="progress-item">
+                        <span class="progress-value">12</span>
+                        <div class="progress-label">Registros no Mês</div>
+                    </div>
+                    <div class="progress-item">
+                        <span class="progress-value">60%</span>
+                        <div class="progress-label">Dias Felizes</div>
+                    </div>
+                    <div class="progress-item">
+                        <span class="progress-value">+15%</span>
+                        <div class="progress-label">Mais Felicidade</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>Criado com carinho para acompanhar o bem-estar emocional da sua criança e promover autocuidado 💙</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
