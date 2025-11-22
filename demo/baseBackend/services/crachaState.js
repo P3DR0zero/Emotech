@@ -1,7 +1,7 @@
 // Este serviço guarda o estado atual dos sensores.
 // Ele pode ser atualizado pelo adapter MQTT e consultado pela API.
 
-export default class TwinState {
+export default class crachaState {
   constructor() {
     // Guarda o estado dos sensores em memória
     this.state = {};

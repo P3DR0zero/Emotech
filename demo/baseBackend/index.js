@@ -1,15 +1,15 @@
-import TwinState from './services/twinState.js';
+import TwinState from './services/crachaState.js';
 import { createServer } from './api/server.js';
 import { ComunicaAdapter } from './adapters/comunicaAdapters.js';
 
 const PORT = process.env.PORT || 3000;
 
-const twinState = new TwinState();
+const crachaState = new crachaState();
 
 // inicializa MQTT adapter
-const comunica = new ComunicaAdapter(twinState, {
+const comunica = new ComunicaAdapter(crachaState, {
   brokerUrl: 'ws://mqtt.ect.ufrn.br:1884/mqtt',
-  topic: 'R/IOT/CTRL',
+  topic: 'emtch/cracha',
   clientOptions: {
     username: 'mqtt',
     password: 'lar_mqtt',
@@ -20,7 +20,7 @@ const comunica = new ComunicaAdapter(twinState, {
 comunica.connect();
 
 // inicializa API
-const app = createServer(twinState);
+const app = createServer(crachaState);
 app.listen(PORT, () => {
   console.log(`API rodando em http://localhost:${PORT}`);
 });
