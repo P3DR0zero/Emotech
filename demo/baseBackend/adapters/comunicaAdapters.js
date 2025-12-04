@@ -6,8 +6,10 @@ import { salvarDados } from './fileStorageAdapter.js';
  * Instancie passando a instância de TwinState no construtor.
  */
 export class ComunicaAdapter {
-  constructor(crachaState, options = {}) {
+  constructor(service, crachaState) {
+    this.service = service;
     this.crachaState = crachaState;
+    
     this.brokerUrl = options.brokerUrl || 'ws://mqtt.ect.ufrn.br:1884/mqtt';
     this.topic = options.topic || 'emtch/cracha';
     this.clientOptions = options.clientOptions || {
@@ -29,32 +31,43 @@ export class ComunicaAdapter {
     });
     this.client.on('message', (topic, message) => {
       try {
-        const data = JSON.parse(message.toString());
+        const dataBruta = JSON.parse(message.toString());
+
         // garantir campo id: 1) payload.id 2) derived from topic 3) fallback timestamp
-        if (!data.id) {
+        if (!dataBruta.id) {
           // tenta derivar do tópico (ex: sensors/mpu/01 => mpu-01)
           const parts = topic.split('/');
           if (parts.length >= 2) {
-            data.id = parts.slice(-2).join('-'); // ajuste conforme seu padrão de tópico
+            dataBruta.id = parts.slice(-2).join('-'); // ajuste conforme seu padrão de tópico
           } else {
-            data.id = `sensor-${Date.now()}`;
+            dataBruta.id = `sensor-${Date.now()}`;
           }
         }
         if (this.crachaState && typeof this.crachaState.updateSensorState === 'function') {
-          this.crachaState.updateSensorState(data);
+          this.crachaState.updateSensorState(dataBruta);
         }
-        salvarDados(data).catch((e) => console.error('Erro salvarDados:', e));
-        console.log('📦 Recebido:', data);
+        
+        const novoRegistro = new RegistroEmocao(
+          dataBruta.id,
+          dataBruta.emocao,
+          new Date()
+        );
+
+        await this.service.processarNovoRegistro(novoRegistro);
       } catch (err) {
         console.error('Erro ao processar mensagem MQTT:', err);
       }
     });
+
     this.client.on('error', (err) => {
       console.error('MQTT error:', err);
     });
   }
+  
   // opcional: método para desconectar
   disconnect() {
-    if (this.client) this.client.end();
+    if (this.client){
+      this.client.end();
+    }
   }
 }
