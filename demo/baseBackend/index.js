@@ -1,14 +1,16 @@
 //Importações (Note que crachaState é export default, sem chaves)
 import crachaState from './services/crachaState.js'; 
+import { RegistroEmocao } from './model/modeloCracha.js';
 import { createServer } from './api/server.js';
 import { ComunicaAdapter } from './adapters/comunicaAdapters.js';
 import { FileStorageAdapter } from './adapters/fileStorageAdapter.js';
 import { ServiceParaRequisicao } from './services/ServiceParaRequisicao.js';
 
+
 // --- CONFIGURAÇÃO DA MEMÓRIA COMPARTILHADA (Twin State) ---
 // Criei a instância que vai guardar o estado atual dos sensores na RAM.
 // Ela será passada tanto para o MQTT (quem escreve) quanto para a API (quem lê).
-const estadoGlobal = new crachaState();
+const estadoGlobal = new crachaState(RegistroEmocao);
 
 
 // --- CONFIGURAÇÃO DO BACKEND ---
