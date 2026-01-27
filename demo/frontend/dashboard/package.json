@@ -1,0 +1,33 @@
+{
+  "private": true,
+  "description": "https://github.com/mui/material-ui/blob/v7.3.6/docs/data/material/templates/crud-dashboard/CrudDashboard.tsx",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@mui/material": "latest",
+    "react-router": "latest",
+    "react": "latest",
+    "@mui/icons-material": "latest",
+    "@mui/x-date-pickers": "latest",
+    "dayjs": "latest",
+    "@mui/x-data-grid": "latest",
+    "@mui/utils": "latest",
+    "@mui/x-data-grid-pro": "latest",
+    "@mui/x-date-pickers-pro": "latest",
+    "react-dom": "latest",
+    "@emotion/react": "latest",
+    "@emotion/styled": "latest",
+    "typescript": "latest"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "latest",
+    "vite": "latest",
+    "@types/react-router": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest"
+  }
+}
